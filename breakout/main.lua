@@ -33,6 +33,11 @@ function love.load()
         ['particle'] = love.graphics.newImage('graphics/particle.png'),
     }
 
+    -- Quads generate all textures
+    gFrames = {
+        ['paddles'] = GenerateQuadsPaddles(gTextures['main'])
+    }
+
     -- initializee virtual resolution
     push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT, {
         vsync = true,
@@ -71,7 +76,8 @@ function love.load()
         6. 'game-over'
     ]]
     gStateMachine = StateMachine {
-        ['start'] = function() return StartState() end
+        ['start'] = function() return StartState() end,
+        ['play'] = function() return PlayState() end
     }
     gStateMachine:change('start')
 
