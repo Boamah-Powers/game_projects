@@ -34,9 +34,16 @@ function table.slice(tbl, first, last, step)
 end
 
 --[[
+    This function is specifically made to piece out the bricks from the
+    sprite sheet.
+]]
+function GenerateQuadsBricks(atlas)
+    return table.slice(GenerateQuads(atlas, 32, 16), 1, 21)
+end
+
+--[[
     This function is specifically made to piece out the paddles from the
-    sprite sheet. For this, we have to piece out the paddles a little more
-    manually, since they are all different sizes.
+    sprite sheet.
 ]]
 function GenerateQuadsPaddles(atlas)
     local x = 0
